@@ -62,7 +62,38 @@ def get_py_launch_file_info(py_file):
                                 return -1
                         num_nodes =  string_contents.count('actions.Node(')
                         num_includes = string_contents.count('include_launch_description')
-                        return {'path': py_file, 'num_nodes': num_nodes, 'num_includes': num_includes, 'type': 'py'}
+
+                        num_includes_system_modes = 0
+                        num_includes_system_modes += string_contents.count('system_modes') 
+                        num_includes_system_modes += string_contents.count('modelfile')
+
+                        system_modes_included = False
+
+                        if (num_includes_system_modes > 0) :
+                                system_modes_included = True
+                        
+                        return {'path': py_file, 'num_nodes': num_nodes, 'num_includes': num_includes, 'system_modes_included': system_modes_included, 'num_includes_system_modes': num_includes_system_modes, 'type': 'py'}
+        except:
+                return -1
+        
+
+def detect_yaml_files(repo):
+        result = list()
+        file_list = search_files(repo['local_clone_path'], '.yaml')
+        for yaml_file in file_list:
+                file_info = get_yaml_info(yaml_file)
+                if(file_info != -1):
+                        result.append(file_info)
+        return result
+
+def get_yaml_info(yaml_file):
+        try: 
+                with open(yaml_file) as f:
+                        string_contents = f.read()
+                        
+                        num_modes_declarations =  string_contents.count('modes:')
+                                
+                        return {'path': yaml_file, 'num_modes_declarations': num_modes_declarations, 'type': 'yaml'}
         except:
                 return -1
         
@@ -84,6 +115,10 @@ def detect_py_launch_files(repo):
                 file_info = get_py_launch_file_info(py_file)
                 if(file_info != -1):
                         result.append(file_info)
+
+                file_info = get_py_system_modes_info(py_file)
+                if(file_info != -1):
+                        result.append(file_info)
         return result
 
 def start_detecting():
@@ -96,6 +131,7 @@ def start_detecting():
             counter += 1
             p['xml_launch_files'] = detect_xml_launch_files(p)
             p['py_launch_files'] = detect_py_launch_files(p)
+            p['yaml_system_mode_files'] = detect_yaml_files(p)
             detection_result.append(p)      
     c.save(detection_result_path, detection_result)
 
