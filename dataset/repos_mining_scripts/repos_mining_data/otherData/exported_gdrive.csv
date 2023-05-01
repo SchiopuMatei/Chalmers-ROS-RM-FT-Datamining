@@ -1,0 +1,2 @@
+"PR2/pr2_controllers"	"The controllers that run in realtime on the PR2 and supporting packages."	"https://github.com/PR2/pr2_controllers"	"melodic-devel"	"1"	"0"
+"ROBOTIS-GIT/ROBOTIS-THORMANG-MPC"	"ROS packages for the motion of THORMANG3, MPC means Motion PC."	"https://github.com/ROBOTIS-GIT/ROBOTIS-THORMANG-MPC"	"master"	"2"	"0"
