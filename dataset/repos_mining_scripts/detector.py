@@ -66,6 +66,7 @@ def get_py_launch_file_info(py_file):
                         num_includes_system_modes = 0
                         num_includes_system_modes += string_contents.count('system_modes') 
                         num_includes_system_modes += string_contents.count('modelfile')
+                        num_includes_system_modes += string_contents.count('mode_manager.launch')
 
                         system_modes_included = False
 
