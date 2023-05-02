@@ -1,1 +1,0 @@
-This folder will contain the plots produced by the `analysis.r` script.
