@@ -74,12 +74,35 @@ def get_py_launch_file_info(py_file):
                         num_includes_system_modes += string_contents.count('modelfile')
                         num_includes_system_modes += string_contents.count('mode_manager.launch')
 
+
+                        num_GetAvailableStates = string_contents.count('GetAvailableStates')
+                        num_GetState = string_contents.count('GetState')
+                        num_ChangeState = string_contents.count('ChangeState')
+
+                        num_ChangeMode = string_contents.count('ChangeMode')
+                        num_GetMode = string_contents.count('GetMode')
+                        num_GetAvailableModes = string_contents.count('GetAvailableModes')
+
+                        num_TransitionEvent = string_contents.count('TransitionEvent')
+                        num_ModeEvent = string_contents.count('ModeEvent')
+
                         system_modes_included = False
 
                         if (num_includes_system_modes > 0) :
                                 system_modes_included = True
                         
-                        return {'path': py_file, 'num_nodes': num_nodes, 'num_includes': num_includes, 'system_modes_included': system_modes_included, 'num_includes_system_modes': num_includes_system_modes, 'type': 'py'}
+                        return {'path': py_file, 'num_nodes': num_nodes, 'num_includes': num_includes,
+                                        'system_modes_included': system_modes_included,
+                                        'num_includes_system_modes': num_includes_system_modes,
+                                        'num_GetAvailableStates': num_GetAvailableStates,
+                                        'num_GetState': num_GetState,
+                                        'num_ChangeMode': num_ChangeMode,
+                                        'num_GetMode' : num_GetMode,
+                                        'num_GetAvailableModes' : num_GetAvailableModes,
+                                        'num_TransitionEvent' : num_TransitionEvent,
+                                        'num_ModeEvent' : num_ModeEvent,
+                                        'num_ChangeState':num_ChangeState, 
+                                        'type': 'py'}
         except:
                 return -1
         
@@ -120,10 +143,6 @@ def detect_py_launch_files(repo):
         file_list = search_files(repo['local_clone_path'], '.py')
         for py_file in file_list:
                 file_info = get_py_launch_file_info(py_file)
-                if(file_info != -1):
-                        result.append(file_info)
-
-                file_info = get_py_system_modes_info(py_file)
                 if(file_info != -1):
                         result.append(file_info)
         return result
