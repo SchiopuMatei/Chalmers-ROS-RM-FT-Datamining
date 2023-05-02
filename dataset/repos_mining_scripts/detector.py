@@ -48,7 +48,13 @@ def get_xml_launch_file_info(xml_file):
                                 return -1
                         num_nodes = len(soup.find_all('node'))
                         num_includes = len(soup.find_all('include'))
-                        return {'path': xml_file, 'num_nodes': num_nodes, 'num_includes': num_includes, 'type': 'xml'}
+
+                        num_includes_system_modes = len(soup.find_all('system_modes'))
+                        system_modes_included = False
+                        if (num_includes_system_modes) > 0:
+                                system_modes_included = True
+
+                        return {'path': xml_file, 'num_nodes': num_nodes, 'num_includes': num_includes, 'system_modes_included': system_modes_included, 'type': 'xml'}
         except:
                 print(xml_file)
                 return -1
