@@ -19,8 +19,6 @@ ROS datamining project for Chalmers University of Technology
 - run [merge_counter.py](https://github.com/S2-group/icse-seip-2020-replication-package/dataset/repos_mining_scripts/merge_counter.py)
 - run [explorer.py](https://github.com/S2-group/icse-seip-2020-replication-package/dataset/repos_mining_scripts/explorer.py)
 - run [cloner.py](https://github.com/S2-group/icse-seip-2020-replication-package/dataset/repos_mining_scripts/cloner.py)
-- run [detector.py](https://github.com/S2-group/icse-seip-2020-replication-package/dataset/repos_mining_scripts/detector.py)
-- run [metrics_manager.py](https://github.com/S2-group/icse-seip-2020-replication-package/dataset/repos_mining_scripts/metrics_manager.py)
 
 
 
