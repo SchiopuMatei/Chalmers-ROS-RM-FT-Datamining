@@ -23,7 +23,7 @@ def clone_repo(repo, path_to_clone):
             Repo.clone_from(url = repo['clone_url'], to_path = path_to_clone)
         else:
             print("Jumped repo because its folder already exists: " + repo['id'])
-    except Er:
+    except :
         print("Error for: " + repo['id'])
         print(sys.exc_info()[0])
 

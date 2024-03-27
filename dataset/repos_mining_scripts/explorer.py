@@ -203,9 +203,9 @@ def start_bitbucket_analysis(repos, rosmap_data):
     # Filter tools repositories
     for p in repos:
         if(p['description'] is not None):
-            if(not (("tool" in p['description'].lower()) or ("util" in p['description'].lower()) or ("helper" in p['description'].lower()) or ("library" in p['description'].lower()) or ("util" in p['description'].lower()) or ("plugin" in p['description'].lower()) or ("plug-in" in p['description'].lower()))): # tool, util, helper, library, plugin, plug-in
-                if(not (("tool" in p['full_name'].lower()) or ("util" in p['full_name'].lower()) or ("helper" in p['full_name'].lower()) or ("library" in p['full_name'].lower()) or ("plugin" in p['full_name'].lower()) or ("plug-in" in p['full_name'].lower()))): # tool, util, helper, library, plugin, plug-in
-                    filtered_repos.append(p)
+            # if(not (("tool" in p['description'].lower()) or ("util" in p['description'].lower()) or ("helper" in p['description'].lower()) or ("library" in p['description'].lower()) or ("util" in p['description'].lower()) or ("plugin" in p['description'].lower()) or ("plug-in" in p['description'].lower()))): # tool, util, helper, library, plugin, plug-in
+            #     if(not (("tool" in p['full_name'].lower()) or ("util" in p['full_name'].lower()) or ("helper" in p['full_name'].lower()) or ("library" in p['full_name'].lower()) or ("plugin" in p['full_name'].lower()) or ("plug-in" in p['full_name'].lower()))): # tool, util, helper, library, plugin, plug-in
+            filtered_repos.append(p)
         else:
             filtered_repos.append(p)
     print("5 - Bitbucket Filter TOOLS repositories: " + str(len(filtered_repos)))
@@ -284,9 +284,9 @@ def start_gitlab_analysis(repos):
     # Filter tools repositories
     for p in repos:
         if(p['description'] is not None):
-            if(not (("tool" in p['description'].lower()) or ("util" in p['description'].lower()) or ("helper" in p['description'].lower()) or ("library" in p['description'].lower()) or ("util" in p['description'].lower()) or ("plugin" in p['description'].lower()) or ("plug-in" in p['description'].lower()))): # tool, util, helper, library, plugin, plug-in
-                if(not (("tool" in p['path_with_namespace'].lower()) or ("util" in p['path_with_namespace'].lower()) or ("helper" in p['path_with_namespace'].lower()) or ("library" in p['path_with_namespace'].lower()) or ("plugin" in p['path_with_namespace'].lower()) or ("plug-in" in p['path_with_namespace'].lower()))): # tool, util, helper, library, plugin, plug-in
-                    filtered_repos.append(p)
+            # if(not (("tool" in p['description'].lower()) or ("util" in p['description'].lower()) or ("helper" in p['description'].lower()) or ("library" in p['description'].lower()) or ("util" in p['description'].lower()) or ("plugin" in p['description'].lower()) or ("plug-in" in p['description'].lower()))): # tool, util, helper, library, plugin, plug-in
+            #     if(not (("tool" in p['path_with_namespace'].lower()) or ("util" in p['path_with_namespace'].lower()) or ("helper" in p['path_with_namespace'].lower()) or ("library" in p['path_with_namespace'].lower()) or ("plugin" in p['path_with_namespace'].lower()) or ("plug-in" in p['path_with_namespace'].lower()))): # tool, util, helper, library, plugin, plug-in
+            filtered_repos.append(p)
         else:
             filtered_repos.append(p)    
     print("5 - Gitlab Filter TOOLS repositories: " + str(len(filtered_repos)))
@@ -433,13 +433,13 @@ def start_github_analysis(rosmap_repos, rosmap_commits, ghtorrent_repos, ghtorre
     # Filter tools repositories
     for p in repos:
         if(p['description'] is not None):
-            if(not (("tool" in p['description'].lower()) or ("util" in p['description'].lower()) or ("helper" in p['description'].lower()) or ("library" in p['description'].lower()) or ("util" in p['description'].lower()) or ("plugin" in p['description'].lower()) or ("plug-in" in p['description'].lower()))): # tool, util, helper, library, plugin, plug-in
-                if(not (("tool" in p['full_name'].lower()) or ("util" in p['full_name'].lower()) or ("helper" in p['full_name'].lower()) or ("library" in p['full_name'].lower()) or ("plugin" in p['full_name'].lower()) or ("plug-in" in p['full_name'].lower()))): # tool, util, helper, library, plugin, plug-in
-                    filtered_repos.append(p)
-                else:
-                    discarded.append(p)
-            else:
-                discarded.append(p)
+            # if(not (("tool" in p['description'].lower()) or ("util" in p['description'].lower()) or ("helper" in p['description'].lower()) or ("library" in p['description'].lower()) or ("util" in p['description'].lower()) or ("plugin" in p['description'].lower()) or ("plug-in" in p['description'].lower()))): # tool, util, helper, library, plugin, plug-in
+            #     if(not (("tool" in p['full_name'].lower()) or ("util" in p['full_name'].lower()) or ("helper" in p['full_name'].lower()) or ("library" in p['full_name'].lower()) or ("plugin" in p['full_name'].lower()) or ("plug-in" in p['full_name'].lower()))): # tool, util, helper, library, plugin, plug-in
+            filtered_repos.append(p)
+            #     else:
+            #         discarded.append(p)
+            # else:
+            #     discarded.append(p)
         else:
             filtered_repos.append(p)
     print("5 - GitHub Filter TOOLS repositories: " + str(len(filtered_repos)))
